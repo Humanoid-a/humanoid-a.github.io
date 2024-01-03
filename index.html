@@ -2,13 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lola Project: Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define color scheme */
+        :root {
+            --primary-color: #BF360C;
+            --soft-color: #ffedd9;
+            --menu-top-color: #4d2600;
+            --menu-side-color: #402000;
+            --text-color: #333;
+            --menu-text-color: white;
+            --menu-hover-color: #6d2200;
+            --accent-color: #6d2200;
+            --quote-background-color: #FFFAF0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 22px;
+            line-height: 1.6;
+            background-color: var(--soft-color);
+            color: var(--text-color);
+            padding-top: 70px; /* Space for fixed menu bar */
+        }
+
+        /* Top Menu */
+        .menu-bar {
+            background-color: var(--menu-top-color);
+            color: var(--menu-text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menu-bar .hamburger {
+            cursor: pointer;
+            font-size: 24px;
+            user-select: none;
+        }
+
+        /* Styles for the menu content */
+        .menu-content {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: var(--menu-side-color);
+            color: var(--menu-text-color);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 70px; /* Align with menu bar height*/
+        }
+
+        .menu-content a {
+            padding: 12px 12px 12px 40px;
+            text-decoration: none;
+            font-size: 22px;
+            color: var(--menu-text-color);
+            display: block;
+            transition: 0.3s;
+        }
+
+        .menu-content a:hover {
+            color: var(--menu-hover-color);
+        }
+
+        .menu-content .close-btn {
+            position: absolute;
+            top: 0;
+            right: 35px;
+            font-size: 40px;
+            color: var(--menu-text-color);
+        }
+
+        .content {
+            margin-left: 20px;
+            transition: margin-left 0.5s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the menu font */
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            padding-right: 40px;
+            margin: 20px 0;
+            background-color: var(--quote-background-color);
+            color: var(--text-color);
+        }
+
+
+        .text {
+            padding-right: 100px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
+<div id="myMenu" class="menu-content">
+    <a href="index.html">Home</a>
+    <a href="p1.html">Project:Andy</a>>
+    <a href="p2.html">Project:Leonardo</a>>
+    <a href="p3.html">Project:William</a>>
+    <a href="p4.html">Project:Perry</a>>
+</div>
 
-<a href="p1.html">p1</a>
-<a href="p2.html">p2</a>
-<a href="p3.html">p3</a>
-<a href="p4.html">p4</a>
+<div class="menu-bar">
+    <span class="hamburger" onclick="toggleMenu()">☰ Menu</span>
+</div>
+
+<div class="content">
+    <h1>Lola Project: Society</h1>
+    <div class="text">Text</div>
+    <div class="quote">Quote</div>
+
+</div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("myMenu");
+        var content = document.querySelector('.content');
+
+        if (menu.style.width === '300px') {
+            menu.style.width = '0';
+            content.style.marginLeft = '20px';
+        } else {
+            menu.style.width = '300px';
+            content.style.marginLeft = '320px';
+        }
+    }
+    toggleMenu();
+</script>
 </body>
 </html>

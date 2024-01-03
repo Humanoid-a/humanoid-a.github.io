@@ -2,10 +2,183 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lola Project: Leonardo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define color scheme */
+        :root {
+            --primary-color: #BF360C;
+            --soft-color: #ffedd9;
+            --menu-top-color: #4d2600;
+            --menu-side-color: #402000;
+            --text-color: #333;
+            --menu-text-color: white;
+            --menu-hover-color: #6d2200;
+            --accent-color: #6d2200;
+            --quote-background-color: #FFFAF0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 22px;
+            line-height: 1.6;
+            background-color: var(--soft-color);
+            color: var(--text-color);
+            padding-top: 70px; /* Space for fixed menu bar */
+        }
+
+        /* Top Menu */
+        .menu-bar {
+            background-color: var(--menu-top-color);
+            color: var(--menu-text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .menu-bar .hamburger {
+            cursor: pointer;
+            font-size: 24px;
+            user-select: none;
+        }
+
+        /* Styles for the menu content */
+        .menu-content {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: var(--menu-side-color);
+            color: var(--menu-text-color);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 70px; /* Align with menu bar height*/
+        }
+
+        .menu-content a {
+            padding: 12px 12px 12px 40px;
+            text-decoration: none;
+            font-size: 22px;
+            color: var(--menu-text-color);
+            display: block;
+            transition: 0.3s;
+        }
+
+        .menu-content a:hover {
+            color: var(--menu-hover-color);
+        }
+
+        .menu-content .close-btn {
+            position: absolute;
+            top: 0;
+            right: 35px;
+            font-size: 40px;
+            color: var(--menu-text-color);
+        }
+
+        .content {
+            margin-left: 20px;
+            transition: margin-left 0.5s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the menu font */
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            padding-right: 40px;
+            margin: 20px 0;
+            background-color: var(--quote-background-color);
+            color: var(--text-color);
+        }
+
+
+        .text {
+            padding-right: 100px;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
+<div id="myMenu" class="menu-content">
+    <a href="index.html">Home</a>
+    <a href="p1.html">Project:Andy</a>>
+    <a href="p2.html">Project:Leonardo</a>>
+    <a href="p3.html">Project:William</a>>
+    <a href="p4.html">Project:Perry</a>>
+</div>
 
-<div>你好</div>
+<div class="menu-bar">
+    <span class="hamburger" onclick="toggleMenu()">☰ Menu</span>
+</div>
+
+<div class="content">
+    <h2>Lola’s Main Archetype</h2>
+    <br/>
+    <div class="text">Lola’s main archetype is, perhaps, a rebel. Like all other people participating in drug dealing, she is against the government and the law, which forbids drug dealing especially for meth and heroin. This means that drug dealers and people participating in such acts would be relatively isolated from the “normal” society, which views drugs as greatly harmful as they disrupt the order of society. That means the people with connections to drugs would have to take risks and would likely be brave, individual, and illegal. This makes Lola especially fit for the rebel archetype. Even more “rebel” than other low-ranked drug participators, such as the “muscle man” and her soldiers, she also has more individuality as she does not want to completely follow Eldridge or the cartel and become a mere pawn of theirs. She wants to create her kingdom and that makes her even more like a “rebel”.</div>
+    <div class="quote">“Food or death. Those are the choices. Her mother taught her that, at least. The knowledge has kept her alive.” Pg 61</div>
+    <div class="quote">“In one quick movement, Lola draws the knife and tries to slice clean through Hector’s trigger finger.” Pg 68</div>
+    <div class="quote">“Lola feels a surge of fear and then pride that she has finally graduated from middle management.” Pg 86</div>
+    <div class="quote">“She can’t lower herself on bended knee to Eldridge Waterston and present him with a hundred thousand dollars in cash.” Pg 183</div>
+    <div class="quote">“They are both wrong, Lola thinks. This city is mine.” Pg 209</div>
+    <div class="quote">“but that her rebellious baby brother was bragging on her, acknowledging her talent, her leadership.” Pg 226</div>
+    <div class="quote">“Andrea notices the change in Lola’s behavior——the eating, the posture, the cursing.” Pg 259</div>
+    <br/>
+
+    <h2>Lola’s Nondominant Archetype</h2>
+    <div class="text">Lola’s Nondominant Archetype is the archetype of caregiver. This archetype would completely contradict her major archetype, which is the rebel/outlaw. Unlike the rebels, the caregiver would be selfless and loyal and would lack personal ambitions. This caregiver trait of Lola is nondominant, that most of the time Lola is a rebel but for various occasions, Lola would be caregiving. Such occasions can be seen in Lola’s relationship with Lucy Amaros. For Lucy, Lola was caregiving on nearly all occasions, including sometimes taking over her rebel trait and role to save Lucy and trying to protect her all the time, making Lucy on a high priority of her actions. However, this caregiving trait may also be seen in her relationship with Hector, her baby brother. She would try to raise her brother like a mother and protect his brother, even killing people when she finds Hector being threatened. However, at other times, when Hector did not obey her rebel leader’s role, she would punish Hector with no hesitation.</div>
+    <div class="quote">“‘He was stealing from us,’ Lola said” Pg 66</div>
+    <div class="quote">“Assault with a deadly weapon. On a police officer. Sentence would have to be life. Or death.” Pg 113</div>
+    <div class="quote">“Either way she goes, Lola has decided there is a decent chance she won’t survive the week. That’s why she’s picked out a private kindergarten for Lucy.” Pg 212</div>
+    <div class="quote">“Not great, Lola thinks. Dead. Can’t get my kid into kindergarten.” Pg 221</div>
+    <div class="quote">“She is surprised to this plan now is letting her living room serve as a makeshift death chamber while a five-year-old sleeps down the hall.” Pg 247</div>
+    <div class="quote">“Even when they find her, though, she can’t go dying, because then she will have to leave Lucy with Garcia.” Pg 254</div>
+    <div class="quote">“Still, Lola thinks, is this the crowd she wants Lucy running with?” Pg 277</div>
+    <div class="quote">“She was his mother when their own mother couldn’t be……” Pg 278</div>
+    <div class="quote">“it is not relief Lola feels, but self-hatred for being able to so easily convince Eldridge she would take an innocent life.” Pg 306</div>
+    <br/>
+
+    <h2>Conflicts that move the plot</h2>
+    <div class="text">The first conflict that moved the plot in the relationship with Lola was her conflict with the “smaller society”, which is the leaders of drug dealing in Los Angeles, including Eldridge Waterson and Juan Gomez. This conflict was majorly due to her rebel trait and her ambitions, which motivated her to get more power and control over drug exchange. Thus, she would try to live on and try to defeat Eldridge and Juan to become the ultimate dealer of Los Angeles. This would move Lola to try to live on, trying to live between Juan and Eldridge, and lastly burn Eldridge’s warehouse and kill Juan.</div>
+    <br/>
+    <div class="text">The second conflict that moved the plot was Lola’s conflict with Hector. Hector was Lola’s baby brother, and she raised Hector just like her child. She gives care to Hector and tries to protect Hector when she feels Carlos is harming Hector. However, when Hector disobeys Lola’s instructions, first when he gives mercy in the drug deal, and second when he jumps up to fight Darrel King, Lola does not try to protect Hector anymore. For the former conflict, Lola punished Hector by cutting off his trigger finger, and for the second occasion, Lola punished Hector by sending Hector to jail. This would move the plot as her conflict with Hector forced Lola into some kind of desperation. She was assigned by the cartel to intercept the drug deal between Darrel King and Mr. X, but because of Hector, she fails, when she tries to make a deal with Darrel in the later part of the story, because of Hector, she has to kill Darrel King, which pushes her to a spot that both Eldridge and Juan did not like her.</div>
+    <br/>
+    <div class="text">The third conflict that moved the plot was Lola’s conflict with herself. Her role in the society of Los Angeles was an outlaw who tried to sell drugs, while in the drug society, she was just a pawn who should obey anything her leader assigned. However, instead of being lawless and ambitious, on some occasions, she was caregiving, especially when she was interacting with Lucy Amaros. On these occasions, she tried to not expose Lucy to the dark drug world and protected Lucy, sometimes even harming herself.</div>
+    <br/>
+
+    <h2>Tension or Correspondence</h2>
+    <div class="text">Dichotomy 1: She is the leader of a gang that sells drugs, but she would not trust or feel pity for any drug addicts, thus hating her customers. Thus, this shows the complexity of Lola, she has relatively high moral standards, but her role in society is to supply the people she dislikes with drugs.</div>
+    <br/>
+    <div class="Text"></div>
+
+</div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById("myMenu");
+        var content = document.querySelector('.content');
+
+        if (menu.style.width === '300px') {
+            menu.style.width = '0';
+            content.style.marginLeft = '20px';
+        } else {
+            menu.style.width = '300px';
+            content.style.marginLeft = '320px';
+        }
+    }
+</script>
 </body>
 </html>

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Analysis</title>
+    <title>Lola Project: Template</title>
     <style>
-        /* Basic reset for margins and padding */
         * {
             margin: 0;
             padding: 0;
@@ -14,34 +13,34 @@
 
         /* Define color scheme */
         :root {
-            --primary-color: #BF360C; /* Base color */
-            --soft-color: #ffedd9; /* Light color for quotes and background */
-            --menu-top-color: #4d2600; /* Darkest and least saturated for top menu bar */
-            --menu-side-color: #402000; /* Darker and less saturated for side menu */
-            --text-color: #333; /* Soft color for text */
-            --menu-text-color: white; /* High contrast for menu text */
-            --menu-hover-color: #6d2200; /* Dark color for text on hover */
+            --primary-color: #BF360C;
+            --soft-color: #ffedd9;
+            --menu-top-color: #4d2600;
+            --menu-side-color: #402000;
+            --text-color: #333;
+            --menu-text-color: white;
+            --menu-hover-color: #6d2200;
             --accent-color: #6d2200;
             --quote-background-color: #FFFAF0;
         }
 
-        /* Basic styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 22px;
             line-height: 1.6;
-            background-color: var(--soft-color); /* Softened background */
+            background-color: var(--soft-color);
             color: var(--text-color);
             padding-top: 70px; /* Space for fixed menu bar */
         }
 
-        /* Hamburger menu styles */
+        /* Top Menu */
         .menu-bar {
-            background-color: var(--menu-top-color); /* Darkest and least saturated for top menu */
+            background-color: var(--menu-top-color);
             color: var(--menu-text-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px; /* Increased padding for a bigger menu bar */
+            padding: 15px 30px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -50,7 +49,7 @@
 
         .menu-bar .hamburger {
             cursor: pointer;
-            font-size: 24px; /* Larger "Menu" text */
+            font-size: 24px;
             user-select: none;
         }
 
@@ -62,35 +61,34 @@
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: var(--menu-side-color); /* Darker and less saturated for side menu */
+            background-color: var(--menu-side-color);
             color: var(--menu-text-color);
             overflow-x: hidden;
             transition: 0.5s;
-            padding-top: 70px; /* Align with the menu bar height */
+            padding-top: 70px; /* Align with menu bar height*/
         }
 
         .menu-content a {
-            padding: 12px 12px 12px 40px; /* Larger padding for a bigger touch area */
+            padding: 12px 12px 12px 40px;
             text-decoration: none;
-            font-size: 22px; /* Bigger font-size for menu items */
+            font-size: 22px;
             color: var(--menu-text-color);
             display: block;
             transition: 0.3s;
         }
 
         .menu-content a:hover {
-            color: var(--menu-hover-color); /* Dark color for text on hover */
+            color: var(--menu-hover-color);
         }
 
         .menu-content .close-btn {
             position: absolute;
             top: 0;
             right: 35px;
-            font-size: 40px; /* Larger close button */
+            font-size: 40px;
             color: var(--menu-text-color);
         }
 
-        /* Content styling */
         .content {
             margin-left: 20px;
             transition: margin-left 0.5s;
@@ -99,18 +97,24 @@
 
         .quote {
             font-style: italic;
-            border-left: 4px solid var(--accent-color); /* Accent color for the quote line */
+            border-left: 4px solid var(--accent-color);
             padding-left: 20px;
+            padding-right: 40px;
             margin: 20px 0;
-            background-color: var(--quote-background-color); /* Light color for quote background */
-            color: var(--text-color); /* Dark text for readability */
+            background-color: var(--quote-background-color);
+            color: var(--text-color);
+        }
+
+
+        .text {
+            padding-right: 100px;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
 <div id="myMenu" class="menu-content">
     <a href="index.html">Home</a>
-    <a>Book:Lola</a>>
     <a href="p1.html">Project:Andy</a>>
     <a href="p2.html">Project:Leonardo</a>>
     <a href="p3.html">Project:William</a>>
@@ -119,19 +123,13 @@
 
 <div class="menu-bar">
     <span class="hamburger" onclick="toggleMenu()">☰ Menu</span>
-    <!-- Additional elements can be added here if needed -->
 </div>
 
 <div class="content">
-    <h2>Text & Quote</h2>
-    <div class="quote">
-        <!-- Insert your quote here -->
-        "This is a placeholder for a quote from the book."
-    </div>
-    <!-- More content goes here -->
-    <p>
-        Here is some more text that can be the analysis of the book. Replace this with your actual content.
-    </p >
+    <h2>Title</h2>
+    <div class="text">Text</div>
+    <div class="quote">Quote</div>
+
 </div>
 
 <script>
@@ -144,7 +142,7 @@
             content.style.marginLeft = '20px';
         } else {
             menu.style.width = '300px';
-            content.style.marginLeft = '320px'; /* Adjust content margin when menu is open */
+            content.style.marginLeft = '320px';
         }
     }
 </script>
