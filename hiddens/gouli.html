@@ -127,99 +127,8 @@
 
 <div class="content">
     <h3>肾透力</h3>
-    <div>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-    <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
-        <img src="../resources/gouli1.png"/>
+    <div id="shentouimg">
+
     </div>
 
     <br/>
@@ -231,6 +140,28 @@
 </div>
 
 <script>
+    var imgs_count = 500;
+    for(var i = 0; i < imgs_count; i++) {
+        var container = document.getElementById("shentouimg");
+
+        var newDiv = document.createElement("img"); // 创建新的<div>元素
+        newDiv.src = "../resources/gouli" + ((i % 3) + 1).toString() + ".png";
+        newDiv.id = 'img' + i.toString();
+        container.appendChild(newDiv); // 将新的<div>元素添加到容器中
+    }
+
+    function updateGoulis(num_factor)
+    {
+        for (var i = 0; i < imgs_count; i++)
+        {
+            var img = document.getElementById("img"+i.toString());
+            img.src = "../resources/gouli" + (((num_factor + i) % 3) + 1).toString() + ".png";
+            //img.width += (Math.random() - 0.5) * 30;
+            //img.height += (Math.random() - 0.5) * 30;
+        }
+    }
+
+
     function toggleMenu() {
         var menu = document.getElementById("myMenu");
         var content = document.querySelector('.content');
@@ -244,6 +175,13 @@
         }
     }
     toggleMenu();
+
+    var num_count = 0;
+    setInterval(function(){
+        updateGoulis(num_count);
+        num_count++;
+        num_count %= 3;
+    },100);
 </script>
 </body>
 </html>
