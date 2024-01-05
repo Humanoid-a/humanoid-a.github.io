@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lola Project: Home</title>
+    <title>沈子立在杰男♂逃♂</title>
+    <link rel="icon" href="../resources/gouli1.png", type="image/png" id="title_icon">
     <style>
         * {
             margin: 0;
@@ -15,8 +16,8 @@
         :root {
             --primary-color: #BF360C;
             --soft-color: #ffedd9;
-            --menu-top-color: #4d2600;
-            --menu-side-color: #402000;
+            --menu-top-color: #1ae300;
+            --menu-side-color: #049d00;
             --text-color: #333;
             --menu-text-color: white;
             --menu-hover-color: #6d2200;
@@ -126,7 +127,7 @@
 </div>
 
 <div class="content">
-    <h3>肾透力</h3>
+    <h3 id="webtitle">肾透力</h3>
     <div id="shentouimg">
 
     </div>
@@ -177,11 +178,28 @@
     toggleMenu();
 
     var num_count = 0;
-    setInterval(function(){
+    var title_count = 0;
+    var colors = ['red','green','blue','white','yellow','grey','gray','purple','orange','black','cyan'];
+    setInterval(function()
+    {
         updateGoulis(num_count);
         num_count++;
         num_count %= 3;
+
+        var webtitle = document.getElementById("webtitle");
+        webtitle.style.color = colors[title_count];
+        title_count++;
+        title_count %= colors.length;
     },100);
+
+    var icon_count = 0;
+    //update icon
+    setInterval(function(){
+        var img = document.getElementById("title_icon");
+        img.href = "../resources/gouli" + (icon_count+1).toString() + ".png";
+        icon_count++;
+        icon_count %= 3;
+    },20);
 </script>
 </body>
 </html>

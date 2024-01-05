@@ -126,7 +126,7 @@
 </div>
 
 <div class="content">
-    <h1>Lola Project: Leonardo</h1>
+    <h1 onclick="activate_gouli()">Lola Project: Leonardo</h1>
     <br/>
     <audio src="leonardo.m4a" type="audio/m4a" controls></audio>>
 
@@ -231,7 +231,16 @@
         }
     }
 
-    toggleMenu()
+    toggleMenu();
+
+    function activate_gouli()
+    {
+        var inp = prompt('give me a number');
+        if(inp == 'gouli' || inp == 'shenzili')
+        {
+            window.location.href='hiddens/gouli.html';
+        }
+    }
 </script>
 </body>
 </html>
