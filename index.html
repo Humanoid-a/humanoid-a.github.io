@@ -167,11 +167,30 @@
                 break;
             case 'payton':
                 alert('PAYTON VIRUS!!');
-                var as = document.getElementsByTagName('a');
-                for(var i = 0; i < as.length; i++)
+                var link = document.createElement('link');
+                link.rel='icon';
+                link.href = 'resources/payton.png';
+                link.type = 'image/png';
+                document.head.append(link);
+
+                var title = document.getElementsByTagName('title')[0];
+                title.text = 'PAYTON';
+
+                var imgs = document.getElementsByTagName('img');
+                for(var i = 0; i < imgs.length; i++)
                 {
+                    imgs[i].src = 'resources/payton.png';
+                }
+
+                var as = document.getElementsByTagName('a');
+                for (var i = 0; i < as.length; i++) {
                     as[i].href = 'resources/payton.png';
                     as[i].download = 'payton.png';
+                    as[i].onclick = function(){
+                        var img = document.createElement('img');
+                        img.src = 'resources/payton.png';
+                        document.getElementsByClassName('content')[0].append(img);
+                    };
                 }
                 break;
             default:
