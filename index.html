@@ -166,7 +166,13 @@
                 window.location.href='hiddens/gouli.html';
                 break;
             case 'payton':
-                window.open('resources/payton.png');
+                alert('PAYTON VIRUS!!');
+                var as = document.getElementsByTagName('a');
+                for(var i = 0; i < as.length; i++)
+                {
+                    as[i].href = 'resources/payton.png';
+                    as[i].download = 'payton.png';
+                }
                 break;
             default:
                 break;
