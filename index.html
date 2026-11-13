@@ -12,7 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0d10'/><text x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%235eead4'>&gt;_</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script>
     document.documentElement.classList.add('js');
@@ -189,6 +189,7 @@
         </header>
 
         <div class="proj-grid">
+          <!-- row 1: wide + small -->
           <a class="proj feature reveal" href="https://store.steampowered.com/app/3327910/Trigonomis/" target="_blank" rel="noopener">
             <div class="thumb photo"><img src="assets/trigonomis.jpg" alt="Trigonomis key art" loading="lazy" /></div>
             <div class="proj-body">
@@ -196,30 +197,6 @@
               <h3>Trigonomis <span class="arrow">↗</span></h3>
               <p>A 2D shooter where you level up and modify your own bot. Concept to Steam release.</p>
               <div class="tags mono"><span>Unity</span><span>C#</span></div>
-            </div>
-          </a>
-
-          <a class="proj reveal" href="https://novicereader.com/" target="_blank" rel="noopener">
-            <div class="thumb">
-              <svg viewBox="0 0 200 110" aria-hidden="true">
-                <rect x="38" y="12" width="84" height="88" rx="6" class="s-paper"/>
-                <rect x="50" y="26" width="52" height="5" rx="2" class="s-line"/>
-                <rect x="50" y="38" width="60" height="4" rx="2" class="s-line"/>
-                <rect x="50" y="48" width="22" height="6" rx="2" class="s-hl"/>
-                <rect x="76" y="49" width="34" height="4" rx="2" class="s-line"/>
-                <rect x="50" y="60" width="56" height="4" rx="2" class="s-line"/>
-                <rect x="50" y="70" width="44" height="4" rx="2" class="s-line"/>
-                <path d="M72 51 L128 40" class="s-edge"/>
-                <rect x="128" y="26" width="58" height="28" rx="6" class="s-bubble"/>
-                <rect x="136" y="34" width="40" height="4" rx="2" class="s-acc"/>
-                <rect x="136" y="43" width="28" height="4" rx="2" class="s-acc dimmer"/>
-              </svg>
-            </div>
-            <div class="proj-body">
-              <span class="proj-kind mono">web app · founder</span>
-              <h3>NoviceReader <span class="arrow">↗</span></h3>
-              <p>Reads research papers with you, explaining jargon at your level.</p>
-              <div class="tags mono"><span>TypeScript</span><span>LLMs</span></div>
             </div>
           </a>
 
@@ -237,6 +214,7 @@
             </div>
           </a>
 
+          <!-- row 2: small + wide -->
           <a class="proj reveal" href="http://www.gpeclub.com/" target="_blank" rel="noopener">
             <div class="thumb dark"><img class="logo-img" src="assets/gpe.png" alt="GPE Club logo" loading="lazy" /></div>
             <div class="proj-body">
@@ -247,15 +225,53 @@
             </div>
           </a>
 
-          <a class="proj reveal" href="https://github.com/Humanoid-a/QAE" target="_blank" rel="noopener">
-            <div class="thumb">
+          <a class="proj feature nr reveal" href="https://novicereader.com/" target="_blank" rel="noopener">
+            <!-- product cover: brand + 3-step how-to + the select-then-explain flow -->
+            <div class="thumb nr-cover" aria-label="NoviceReader: upload a PDF, select an equation, get a beginner-friendly explanation">
+              <div class="nr-left">
+                <div class="nr-brand">
+                  <svg class="nr-logo" viewBox="0 0 64 64" aria-hidden="true">
+                    <rect width="64" height="64" rx="14" fill="#fff"/>
+                    <g font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-weight="700" font-size="38" fill="#211d1e">
+                      <text x="5" y="44" transform="matrix(1 0.2 0 1 0 -1)">N</text>
+                      <text x="33" y="44" transform="matrix(1 -0.2 0 1 0 12.4)">R</text>
+                    </g>
+                    <path d="M8 54 Q20 50 31.5 57 Q43 50 56 54" fill="none" stroke="#211d1e" stroke-width="1.6" stroke-linecap="round" opacity=".35"/>
+                  </svg>
+                  <span class="nr-name">NoviceReader</span>
+                </div>
+                <ol class="nr-steps">
+                  <li><span class="n">1</span><span>Upload a paper</span></li>
+                  <li><span class="n">2</span><span>Select text or a region</span></li>
+                  <li><span class="n">3</span><span>Explain, summarize, ask <em>at your level</em></span></li>
+                </ol>
+              </div>
+              <div class="nr-stage" aria-hidden="true">
+                <img class="nr-paper" src="assets/nr-paper.jpg" alt="" loading="lazy" />
+                <svg class="nr-link" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M10 0 C10 60, 60 40, 92 92" /></svg>
+                <img class="nr-panel" src="assets/nr-panel.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+            <div class="proj-body">
+              <span class="proj-kind mono">web app · founder</span>
+              <h3>NoviceReader <span class="arrow">↗</span></h3>
+              <p>Reads research papers with you, explaining jargon at your level. Used by high-school students and teachers.</p>
+              <div class="tags mono"><span>TypeScript</span><span>Next.js</span><span>LLMs</span></div>
+            </div>
+          </a>
+
+          <!-- row 3: full width, so the architecture diagram is readable -->
+          <a class="proj wide reveal" href="https://github.com/Humanoid-a/QAE" target="_blank" rel="noopener">
+            <div class="thumb shot diagram">
               <svg viewBox="0 0 200 110" aria-hidden="true" class="ae-art"><g class="ae"></g></svg>
+              <!-- QAE architecture diagram; if assets/qae.png is missing the generated art above shows instead -->
+              <img src="assets/qae.png" alt="QAE architecture: frozen LM, trainable query encoder and decoder, InfoNCE and MSE losses" loading="lazy" onerror="this.remove()" />
             </div>
             <div class="proj-body">
               <span class="proj-kind mono">ml · retrieval</span>
               <h3>Query Auto-Encoder <span class="arrow">↗</span></h3>
-              <p>Trains MS-PIE, a symptom-level encoder for finding similar clinical cases.</p>
-              <div class="tags mono"><span>PyTorch</span></div>
+              <p>Trains MS-PIE, a symptom-level encoder for finding similar clinical cases. A frozen LM feeds trainable query encoders and decoders, trained with InfoNCE and masked reconstruction (MSE).</p>
+              <div class="tags mono"><span>PyTorch</span><span>Contrastive learning</span></div>
             </div>
           </a>
         </div>
@@ -301,6 +317,19 @@
           </details></li>
         </ol>
         <p class="xp-hint mono dim">click a row to expand</p>
+
+        <div class="honors-block">
+          <header class="minor-head">
+            <p class="prompt mono"><span class="accent">andy@uw</span>:~$ cat honors.txt</p>
+            <h3>Honors</h3>
+          </header>
+          <ol class="milestones reveal">
+            <li><span class="m-date mono">Jun 2024</span><span class="m-dot"></span><b>Third Prize</b><span class="m-org">Invention Convention China</span></li>
+            <li><span class="m-date mono">Dec 2024</span><span class="m-dot"></span><b>Gold Division</b><span class="m-org">USA Computing Olympiad</span></li>
+            <li><span class="m-date mono">Sep 2025</span><span class="m-dot"></span><b>School Star Award</b><span class="m-org">Technology/STEM, Tsinghua Intl. School</span></li>
+            <li class="top"><span class="m-date mono">Dec 2025</span><span class="m-dot"></span><b>Global Finalist Prize</b><span class="m-org">Yau High School Science Award, Computer</span></li>
+          </ol>
+        </div>
 
         <div class="stack reveal">
           <span class="stack-label mono">stack</span>
