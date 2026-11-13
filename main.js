@@ -83,6 +83,37 @@
 
   /* ---------- 5. hero: navigation agent ---------- */
   initNavAgent();
+  drawThumbArt();
+
+  /* small generated SVG art for project thumbnails */
+  function drawThumbArt() {
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+
+    // territory-capture board: two players' territory plus one open trail
+    const cells = $('.grid-art .cells');
+    if (cells) {
+      const C = 14, R = 7, S = 12, G = 2, ox = (200 - C * (S + G)) / 2, oy = (110 - R * (S + G)) / 2;
+      const A = new Set(['1,1','2,1','3,1','1,2','2,2','3,2','4,2','1,3','2,3','3,3','2,4','3,4']);
+      const B = new Set(['9,3','10,3','11,3','12,3','9,4','10,4','11,4','12,4','10,5','11,5','12,5','11,2','12,2']);
+      const T = new Set(['4,3','5,3','6,3','6,4','6,5','5,5','4,5']);
+      for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) {
+        const k = c + ',' + r;
+        const cls = A.has(k) ? 'c-a' : B.has(k) ? 'c-b' : T.has(k) ? 'c-trail' : 'c-empty';
+        cells.appendChild(el('rect', { x: ox + c * (S + G), y: oy + r * (S + G), width: S, height: S, rx: 2, class: cls }));
+      }
+    }
+
+    // autoencoder: 5-3-1-3-5 layers, bottleneck highlighted
+    const ae = $('.ae-art .ae');
+    if (ae) {
+      const layers = [5, 3, 1, 3, 5], xs = [30, 65, 100, 135, 170];
+      const pos = layers.map((n, i) => Array.from({ length: n }, (_, j) => ({ x: xs[i], y: 55 + (j - (n - 1) / 2) * 20 })));
+      for (let i = 0; i < pos.length - 1; i++)
+        for (const a of pos[i]) for (const b of pos[i + 1]) ae.appendChild(el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: 'ae-edge' }));
+      pos.forEach((L, i) => L.forEach(p => ae.appendChild(el('circle', { cx: p.x, cy: p.y, r: i === 2 ? 7 : 5.5, class: 'ae-node' + (i === 2 ? ' z' : '') }))));
+    }
+  }
 
   function initNavAgent() {
     const canvas = $('#nav-canvas');
@@ -94,6 +125,8 @@
     let mouse = null, mouseAt = 0, wanderTarget = null;
     let running = false, visible = true, raf = 0;
     let colors = {};
+    const stats = { explored: 0, mapped: 0 };
+    const hud = { exp: $('#hud-exp'), path: $('#hud-path'), map: $('#hud-map'), t: 0 };
 
     const idx = (c, r) => r * cols + c;
     const inb = (c, r) => c >= 0 && r >= 0 && c < cols && r < rows;
@@ -142,7 +175,7 @@
       let sc = Math.floor(cols * 0.93), sr = Math.floor(rows * 0.2);
       for (let dc = -1; dc <= 1; dc++) for (let dr = -1; dr <= 1; dr++) if (inb(sc + dc, sr + dr)) wall[idx(sc + dc, sr + dr)] = 0;
       agent = { x: sc + 0.5, y: sr + 0.5, trail: [] };
-      path = []; target = null; wanderTarget = null;
+      path = []; target = null; wanderTarget = null; stats.mapped = 0;
     }
 
     // --- A* (8-connected, no corner cutting) with a tiny binary heap ---
@@ -173,10 +206,11 @@
       const h = (c, r) => { const dx = Math.abs(c - tc), dy = Math.abs(r - tr); return dx + dy + (Math.SQRT2 - 2) * Math.min(dx, dy); };
       g[start] = 0; push(h(sc, sr), start);
       const now = performance.now();
+      let explored = 0;
       while (heap.length) {
         const [, n] = pop();
         if (closed[n]) continue;
-        closed[n] = 1; visited[n] = now;
+        closed[n] = 1; visited[n] = now; explored++;
         if (n === goal) break;
         const c = n % cols, r = (n / cols) | 0;
         for (let dc = -1; dc <= 1; dc++) for (let dr = -1; dr <= 1; dr++) {
@@ -190,6 +224,7 @@
           if (ng < g[m]) { g[m] = ng; came[m] = n; push(ng + h(nc, nr), m); }
         }
       }
+      stats.explored = explored;
       if (came[goal] === -1 && goal !== start) return null;
       const out = [];
       for (let n = goal; n !== -1 && n !== start; n = came[n]) out.push({ x: (n % cols) + 0.5, y: ((n / cols) | 0) + 0.5 });
@@ -232,7 +267,7 @@
           d += 0.2; hx = agent.x + dx * d; hy = agent.y + dy * d;
           const c = Math.floor(hx), r = Math.floor(hy);
           if (!inb(c, r)) break;
-          if (wall[idx(c, r)]) { seen[idx(c, r)] = now; hit = true; break; }
+          if (wall[idx(c, r)]) { if (!seen[idx(c, r)]) stats.mapped++; seen[idx(c, r)] = now; hit = true; break; }
         }
         hits.push({ x: hx, y: hy, hit });
       }
@@ -327,6 +362,12 @@
     function loop(now) {
       const dt = Math.min(0.05, (now - last) / 1000); last = now;
       plan(now); step(dt); draw(now);
+      if (now - hud.t > 200 && hud.exp) {
+        hud.t = now;
+        hud.exp.textContent = stats.explored;
+        hud.path.textContent = path.length;
+        hud.map.textContent = stats.mapped;
+      }
       raf = requestAnimationFrame(loop);
     }
     function start() { if (running || reducedMotion) return; running = true; last = performance.now(); raf = requestAnimationFrame(loop); }
@@ -412,7 +453,7 @@
                        <span class="hl2">Packages</span>: pytorch, ros2, docker, django
                        <span class="hl2">Locale</span>:  en_US, zh_CN, ja_JP
                        <span class="hl2">GPU</span>:     always busy`),
-    ls: () => print(`<span class="hl">about/</span>  <span class="hl">now/</span>  <span class="hl">research/</span>  <span class="hl">projects/</span>  <span class="hl">experience/</span>  <span class="hl">beyond/</span>  <span class="hl">contact/</span>  resume.pdf`),
+    ls: () => print(`<span class="hl">highlights/</span>  <span class="hl">about/</span>  <span class="hl">research/</span>  <span class="hl">projects/</span>  <span class="hl">experience/</span>  <span class="hl">contact/</span>  resume.pdf`),
     cd: a => {
       const s = (a[0] || '').replace(/\/$/, '').replace(/^\.\//, '');
       if (!s || s === '~') return print('already home.');
@@ -489,7 +530,7 @@ ${link('https://github.com/Humanoid-a/QAE', 'QAE')}              query auto-enco
       e.preventDefault();
       const v = input.value, parts = v.split(/\s+/);
       const pool = parts.length > 1
-        ? (parts[0] === 'open' ? Object.keys(LINKS) : parts[0] === 'cd' ? ['about', 'now', 'research', 'projects', 'experience', 'beyond', 'contact'] : parts[0] === 'cat' ? ['interests'] : [])
+        ? (parts[0] === 'open' ? Object.keys(LINKS) : parts[0] === 'cd' ? ['highlights', 'about', 'research', 'projects', 'experience', 'contact'] : parts[0] === 'cat' ? ['interests'] : [])
         : Object.keys(commands);
       const last = parts[parts.length - 1];
       const m = pool.filter(p => p.startsWith(last));
