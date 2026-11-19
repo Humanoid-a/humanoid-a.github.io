@@ -421,7 +421,7 @@
     github: 'https://github.com/Humanoid-a',
     linkedin: 'https://www.linkedin.com/in/andyxw',
     email: 'mailto:andyxw@uw.edu',
-    resume: 'docs/Wang_Resume_261112.pdf',
+    resume: 'https://humanoid-a.github.io/andyxuwangresume/Wang_Resume_latest.pdf',
     steam: 'https://store.steampowered.com/app/3327910/Trigonomis/',
     bilibili: 'https://space.bilibili.com/481586636',
     novicereader: 'https://novicereader.com/',
